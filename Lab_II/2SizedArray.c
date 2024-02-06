@@ -5,7 +5,19 @@
 int** Array2Dim_Create(int row, int cols) {
 
 	int** arr1 = malloc(cols * sizeof(int*));
+
+	if (!arr1) {
+		printf("ERR_ALLOC_MEM");
+		return 1;
+	}
+
 	int* arr2 = malloc(row * cols * sizeof(int));
+
+	if (!arr2) {
+		printf("ERR_ALLOC_MEM");
+		free(arr1);
+		return 1;
+	}
 
 	int* tmp = arr2;
 	for (int i = 0; i < cols; i++) {
